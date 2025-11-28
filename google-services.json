@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "453253173599",
+    "project_id": "fincalaherradura-c5229",
+    "storage_bucket": "fincalaherradura-c5229.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:453253173599:android:7f6cdc65d8ba0351f5a6ea",
+        "android_client_info": {
+          "package_name": "com.nadrika.agroapp"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAxIleaXU1oZbMwxqfFu2El9C4ELqMEk-k"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

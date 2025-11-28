@@ -1,0 +1,13 @@
+diff --git a/node_modules/@react-native-firebase/auth/lib/index.js b/node_modules/@react-native-firebase/auth/lib/index.js
+index 9c8c1e5..e2622e2 100644
+--- a/node_modules/@react-native-firebase/auth/lib/index.js
++++ b/node_modules/@react-native-firebase/auth/lib/index.js
+@@ -21,7 +21,7 @@ import {
+   isNull,
+   isString,
+   isValidUrl,
+-} from '@react-native-firebase/app/lib/common';
++} from '@react-native-firebase/app/lib/common/index.js';
+ import {
+   FirebaseModule,
+   createModuleNamespace,
