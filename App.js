@@ -38,11 +38,11 @@ import {
 } from 'react-native';
 import { Ionicons } from '@expo/vector-icons';
 import * as Font from 'expo-font';
-import { useFonts } from 'expo-font';
+
 
 import auth from '@react-native-firebase/auth';
 import firestore from '@react-native-firebase/firestore';
-/*import {
+import {
   PLANS,
   checkIfPremium,
   AdBanner,
@@ -54,19 +54,7 @@ import firestore from '@react-native-firebase/firestore';
   ActivatePremiumPanel,
   PlatformMetricsDashboard,  // 🆕 AGREGAR ESTA LÍNEA
 } from './MONETIZATION-COMPONENTS';
-*/
 
-// MOCK temporal
-const PLANS = {};
-const checkIfPremium = async () => false;
-const AdBanner = () => null;
-const showInterstitialAd = async () => {};
-const showRewardedAd = async () => {};
-const RequestPremiumModal = () => null;
-const Paywall = () => null;
-const AdminMetricsDashboard = () => null;
-const ActivatePremiumPanel = () => null;
-const PlatformMetricsDashboard = () => null;
 
 // ========================================
 // VERSIÓN: 2024-01-03-FINAL-v7.2-PRESUPUESTOS-FIX
@@ -3142,9 +3130,43 @@ function ProductionScreen({ settings, currentFarm, onBack }) {
     loadHarvests();
   }, []);
 
-  const loadHarvests = async () => {
+// Validación de finca
+  if (!currentFarm || !currentFarm.id) {
+    return (
+      <View style={styles.container}>
+        <View style={styles.header}>
+          {onBack && (
+            <TouchableOpacity onPress={onBack}>
+              <Text style={{ fontSize: 24 }}>←</Text>
+            </TouchableOpacity>
+          )}
+          <Text style={styles.headerTitle}>Producción</Text>
+        </View>
+        <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
+          <Text style={{ fontSize: 18, color: '#F44336', marginBottom: 10 }}>⚠️ Error</Text>
+          <Text style={{ color: '#666' }}>No hay finca seleccionada</Text>
+          <TouchableOpacity 
+            style={{ marginTop: 20, padding: 10, backgroundColor: '#4CAF50', borderRadius: 5 }}
+            onPress={onBack}
+          >
+            <Text style={{ color: 'white' }}>Volver al Dashboard</Text>
+          </TouchableOpacity>
+        </View>
+      </View>
+    );
+  }
+
+
+
+const loadHarvests = async () => {
     try {
-      const snapshot = await getFarmCollection('harvests', currentFarm).orderBy('date', 'desc').get();
+      const collection = getFarmCollection('harvests', currentFarm);
+      if (!collection) {
+        console.error('❌ No se puede cargar cosechas: finca no válida');
+        return;
+      }
+      
+      const snapshot = await collection.orderBy('date', 'desc').get();
       const harvestsData = snapshot.docs.map(doc => ({ id: doc.id, ...doc.data() }));
       
       setHarvests(harvestsData);
@@ -3165,7 +3187,6 @@ function ProductionScreen({ settings, currentFarm, onBack }) {
       console.error('Error:', error);
     }
   };
-
   const handleDelete = (id, date) => {
     Alert.alert(
       'Confirmar Eliminación',
@@ -3177,7 +3198,12 @@ function ProductionScreen({ settings, currentFarm, onBack }) {
           style: 'destructive',
           onPress: async () => {
             try {
-              await getFarmCollection('harvests', currentFarm).doc(id).delete();
+              const collection = getFarmCollection('harvests', currentFarm);
+if (!collection) {
+  Alert.alert('Error', 'No se puede eliminar: finca no válida');
+  return;
+}
+await collection.doc(id).delete();
               Alert.alert('Éxito', 'Cosecha eliminada');
               loadHarvests();
             } catch (error) {
@@ -8616,18 +8642,9 @@ function EmployeesScreen({ onBack, currentFarm }) {
 // ============ MAIN APP ============
 export default function App() {
 
-    // Cargar fuentes de íconos
-  const [fontsLoaded] = useFonts({
-    ...Ionicons.font,
-  });
 
-  if (!fontsLoaded || loading) {
-    return (
-      <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center', backgroundColor: '#fff' }}>
-        <Text>Cargando...</Text>
-      </View>
-    );
-  }
+
+
   console.log('🚀 App iniciando...');
   
   const [user, setUser] = useState(null);
@@ -8659,7 +8676,8 @@ export default function App() {
     rewardAmount: 0,
   });
   const [adsWatchedToday, setAdsWatchedToday] = useState(0);
-  
+
+
 
   useEffect(() => {
     console.log('🔥 useEffect de auth ejecutándose...');

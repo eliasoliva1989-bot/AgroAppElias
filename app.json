@@ -17,7 +17,6 @@
     "ios": {
       "supportsTablet": true,
       "bundleIdentifier": "com.nadrika.agroapp"
-      
     },
     "android": {
       "package": "com.nadrika.agroapp",
@@ -54,6 +53,8 @@
       "appVersionSource": "remote"
     },
     "extra": {
+      "eas": {
+        "projectId": "bec73b26-3984-4e39-a060-dc5dc2c22dc4"
       }
     }
   }
