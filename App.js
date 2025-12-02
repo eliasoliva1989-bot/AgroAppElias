@@ -1220,7 +1220,7 @@ function LoginScreen() {
               style={{ position: 'absolute', right: 15, top: 15 }}
               onPress={() => setShowPassword(!showPassword)}
             >
-              <Ionicons name={showPassword ? "eye-off" : "eye"} size={24} color="#999" />
+              <Text style={{ fontSize: 24 }}>{showPassword ? "🙈" : "👁️"}</Text>
             </TouchableOpacity>
           </View>
 
@@ -1277,7 +1277,7 @@ function LoginScreen() {
             <View style={styles.modalHeader}>
               <Text style={styles.modalTitle}>🔑 Recuperar Contraseña</Text>
               <TouchableOpacity onPress={() => setShowForgotPassword(false)} disabled={loading}>
-                <Ionicons name="close" size={24} color="#333" />
+                <Text style={{ fontSize: 24 }}>✖️</Text>
               </TouchableOpacity>
             </View>
 
@@ -1442,7 +1442,7 @@ function DashboardScreen({ user, settings, onNavigate, currentFarm, userFarms, u
           <Text style={styles.headerSubtitle}>{user?.email}</Text>
         </View>
         <TouchableOpacity onPress={() => onNavigate('Settings')}>
-          <Ionicons name="settings-outline" size={28} color="#333" />
+          <Text style={{ fontSize: 28 }}>⚙️</Text>
         </TouchableOpacity>
       </View>
 
@@ -1486,7 +1486,7 @@ function DashboardScreen({ user, settings, onNavigate, currentFarm, userFarms, u
           }}
         >
           <View style={{ flexDirection: "row", alignItems: "center" }}>
-            <Ionicons name="people" size={24} color="#2196F3" />
+            <Text style={{ fontSize: 24 }}>👥</Text>
             <View style={{ marginLeft: 12 }}>
               <Text style={{ fontSize: 15, fontWeight: "bold", color: "#333" }}>
                 Gestionar Equipo
@@ -1496,7 +1496,7 @@ function DashboardScreen({ user, settings, onNavigate, currentFarm, userFarms, u
               </Text>
             </View>
           </View>
-          <Ionicons name="chevron-forward" size={20} color="#999" />
+          <Text style={{ fontSize: 20 }}>→</Text>
         </TouchableOpacity>
       )}
 
@@ -1549,21 +1549,21 @@ function DashboardScreen({ user, settings, onNavigate, currentFarm, userFarms, u
               
               <View style={{ flexDirection: 'row', justifyContent: 'space-around', paddingTop: 15, borderTopWidth: 1, borderTopColor: '#F0F0F0' }}>
                 <View style={{ alignItems: 'center' }}>
-                  <Ionicons name="water" size={20} color="#2196F3" />
+                  <Text style={{ fontSize: 20 }}>💧</Text>
                   <Text style={{ fontSize: 12, color: '#666', marginTop: 5 }}>Humedad</Text>
                   <Text style={{ fontSize: 16, fontWeight: '600', color: '#333' }}>
                     {currentWeather.humidity}%
                   </Text>
                 </View>
                 <View style={{ alignItems: 'center' }}>
-                  <Ionicons name="flag" size={20} color="#607D8B" />
+                  <Text style={{ fontSize: 20 }}>🚩</Text>
                   <Text style={{ fontSize: 12, color: '#666', marginTop: 5 }}>Viento</Text>
                   <Text style={{ fontSize: 16, fontWeight: '600', color: '#333' }}>
                     {currentWeather.wind_speed.toFixed(0)} km/h
                   </Text>
                 </View>
                 <View style={{ alignItems: 'center' }}>
-                  <Ionicons name="eye" size={20} color="#4CAF50" />
+                  <Text style={{ fontSize: 20 }}>👁️</Text>
                   <Text style={{ fontSize: 12, color: '#666', marginTop: 5 }}>Sensación</Text>
                   <Text style={{ fontSize: 16, fontWeight: '600', color: '#333' }}>
                     {currentWeather.feels_like.toFixed(0)}°C
@@ -1618,7 +1618,7 @@ function DashboardScreen({ user, settings, onNavigate, currentFarm, userFarms, u
                     </Text>
                     {day.rain > 0 && (
                       <View style={{ flexDirection: 'row', alignItems: 'center', marginTop: 5 }}>
-                        <Ionicons name="water" size={12} color="#2196F3" />
+                        <Text style={{ fontSize: 12 }}>💧</Text>
                         <Text style={{ fontSize: 11, color: '#2196F3', marginLeft: 3 }}>
                           {day.rain.toFixed(0)}mm
                         </Text>
@@ -1885,7 +1885,7 @@ function DashboardScreen({ user, settings, onNavigate, currentFarm, userFarms, u
                 flexDirection: 'row',
                 alignItems: 'center',
               }}>
-                <Ionicons name="bulb" size={20} color="#2196F3" />
+                <Text style={{ fontSize: 20 }}>💡</Text>
                 <Text style={{ fontSize: 12, color: '#2196F3', marginLeft: 8, flex: 1 }}>
                   Predicción próximo mes: ~{productionTrend.prediction.toFixed(0)} unidades
                 </Text>
@@ -1906,35 +1906,35 @@ function DashboardScreen({ user, settings, onNavigate, currentFarm, userFarms, u
           <Text style={styles.sectionTitle}>Acciones Rápidas</Text>
           <View style={styles.quickActions}>
             <TouchableOpacity style={styles.quickAction} onPress={() => onNavigate('TreeManagement')}>
-              <Ionicons name="leaf" size={40} color="#4CAF50" />
+              <Text style={{ fontSize: 40 }}>🌱</Text>
               <Text style={styles.quickActionText}>Gestión de Árboles</Text>
             </TouchableOpacity>
             <TouchableOpacity style={styles.quickAction} onPress={() => onNavigate('Production')}>
-              <Ionicons name="basket" size={40} color="#795548" />
+              <Text style={{ fontSize: 40 }}>🧺</Text>
               <Text style={styles.quickActionText}>Producción</Text>
             </TouchableOpacity>
             <TouchableOpacity style={styles.quickAction} onPress={() => onNavigate('Sales')}>
-              <Ionicons name="cart" size={40} color="#4CAF50" />
+              <Text style={{ fontSize: 40 }}>🛒</Text>
               <Text style={styles.quickActionText}>Ventas</Text>
             </TouchableOpacity>
             <TouchableOpacity style={styles.quickAction} onPress={() => onNavigate('Expenses')}>
-              <Ionicons name="wallet" size={40} color="#F44336" />
+              <Text style={{ fontSize: 40 }}>💰</Text>
               <Text style={styles.quickActionText}>Gastos</Text>
             </TouchableOpacity>
             <TouchableOpacity style={styles.quickAction} onPress={() => onNavigate('Tasks')}>
-              <Ionicons name="checkbox" size={40} color="#9C27B0" />
+              <Text style={{ fontSize: 40 }}>✅</Text>
               <Text style={styles.quickActionText}>Tareas</Text>
             </TouchableOpacity>
             <TouchableOpacity style={styles.quickAction} onPress={() => onNavigate('Reports')}>
-              <Ionicons name="stats-chart" size={40} color="#2196F3" />
+              <Text style={{ fontSize: 40 }}>📊</Text>
               <Text style={styles.quickActionText}>Reportes</Text>
             </TouchableOpacity>
             <TouchableOpacity style={styles.quickAction} onPress={() => onNavigate('Inventory')}>
-              <Ionicons name="cube" size={40} color="#FF9800" />
+              <Text style={{ fontSize: 40 }}>📦</Text>
               <Text style={styles.quickActionText}>Inventario</Text>
             </TouchableOpacity>
             <TouchableOpacity style={styles.quickAction} onPress={() => onNavigate('Employees')}>
-              <Ionicons name="people" size={40} color="#9C27B0" />
+              <Text style={{ fontSize: 40 }}>👥</Text>
               <Text style={styles.quickActionText}>Empleados</Text>
             </TouchableOpacity>
           </View>
@@ -1973,7 +1973,7 @@ function TreeManagementMenu({ onNavigate, onBack }) {
       <View style={styles.header}>
         {onBack && (
           <TouchableOpacity onPress={onBack}>
-            <Ionicons name="arrow-back" size={24} color="#333" />
+            <Text style={{ fontSize: 24 }}>←</Text>
           </TouchableOpacity>
         )}
         <Text style={styles.headerTitle}>Gestión de Árboles</Text>
@@ -1991,7 +1991,7 @@ function TreeManagementMenu({ onNavigate, onBack }) {
               <Ionicons name={item.icon} size={32} color={item.color} />
             </View>
             <Text style={styles.menuItemText}>{item.title}</Text>
-            <Ionicons name="chevron-forward" size={24} color="#ccc" />
+            <Text style={{ fontSize: 24 }}>→</Text>
           </TouchableOpacity>
         ))}
       </ScrollView>
@@ -2114,14 +2114,14 @@ function SectorsScreen({ currentFarm, onBack }) {
     <View style={styles.container}>
       <View style={styles.header}>
         <TouchableOpacity onPress={onBack}>
-          <Ionicons name="arrow-back" size={24} color="#333" />
+          <Text style={{ fontSize: 24 }}>←</Text>
         </TouchableOpacity>
         <Text style={styles.headerTitle}>Sectores</Text>
         <TouchableOpacity onPress={() => {
           setEditingSector(null);
           setShowModal(true);
         }}>
-          <Ionicons name="add-circle" size={28} color="#4CAF50" />
+          <Text style={{ fontSize: 28 }}>➕</Text>
         </TouchableOpacity>
       </View>
 
@@ -2129,7 +2129,7 @@ function SectorsScreen({ currentFarm, onBack }) {
         {sectors.map(sector => (
           <View key={sector.id} style={styles.card}>
             <View style={styles.cardHeader}>
-              <Ionicons name="location" size={24} color="#4CAF50" />
+              <Text style={{ fontSize: 24 }}>📍</Text>
               <View style={styles.cardHeaderText}>
                 <Text style={styles.cardTitle}>{sector.name}</Text>
                 <Text style={styles.cardSubtitle}>{sector.area} ha</Text>
@@ -2146,14 +2146,14 @@ function SectorsScreen({ currentFarm, onBack }) {
                   setShowModal(true);
                 }}
               >
-                <Ionicons name="create-outline" size={20} color="#2196F3" />
+                <Text style={{ fontSize: 20 }}>✏️</Text>
                 <Text style={styles.actionButtonText}>Editar</Text>
               </TouchableOpacity>
               <TouchableOpacity
                 style={[styles.actionButton, styles.deleteButton]}
                 onPress={() => handleDelete(sector.id, sector.name)}
               >
-                <Ionicons name="trash-outline" size={20} color="#F44336" />
+                <Text style={{ fontSize: 20 }}>🗑️</Text>
                 <Text style={[styles.actionButtonText, styles.deleteButtonText]}>Eliminar</Text>
               </TouchableOpacity>
             </View>
@@ -2272,7 +2272,7 @@ function SectorModal({ visible, sector, onClose, onSuccess, currentFarm }) {
           <View style={styles.modalHeader}>
             <Text style={styles.modalTitle}>{sector ? 'Editar' : 'Agregar'} Sector</Text>
             <TouchableOpacity onPress={onClose}>
-              <Ionicons name="close" size={24} color="#333" />
+              <Text style={{ fontSize: 24 }}>✖️</Text>
             </TouchableOpacity>
           </View>
           
@@ -2342,14 +2342,14 @@ function RowsScreen({ currentFarm, onBack }) {
     <View style={styles.container}>
       <View style={styles.header}>
         <TouchableOpacity onPress={onBack}>
-          <Ionicons name="arrow-back" size={24} color="#333" />
+          <Text style={{ fontSize: 24 }}>←</Text>
         </TouchableOpacity>
         <Text style={styles.headerTitle}>Surcos</Text>
         <TouchableOpacity onPress={() => {
           setEditingRow(null);
           setShowModal(true);
         }}>
-          <Ionicons name="add-circle" size={28} color="#2196F3" />
+          <Text style={{ fontSize: 28 }}>➕</Text>
         </TouchableOpacity>
       </View>
 
@@ -2359,7 +2359,7 @@ function RowsScreen({ currentFarm, onBack }) {
           return (
             <View key={row.id} style={styles.card}>
               <View style={styles.cardHeader}>
-                <Ionicons name="grid" size={24} color="#2196F3" />
+                <Text style={{ fontSize: 24 }}>▦</Text>
                 <View style={styles.cardHeaderText}>
                   <Text style={styles.cardTitle}>{row.name}</Text>
                   <Text style={styles.cardSubtitle}>Número: {row.number}</Text>
@@ -2377,14 +2377,14 @@ function RowsScreen({ currentFarm, onBack }) {
                     setShowModal(true);
                   }}
                 >
-                  <Ionicons name="create-outline" size={20} color="#2196F3" />
+                  <Text style={{ fontSize: 20 }}>✏️</Text>
                   <Text style={styles.actionButtonText}>Editar</Text>
                 </TouchableOpacity>
                 <TouchableOpacity
                   style={[styles.actionButton, styles.deleteButton]}
                   onPress={() => handleDelete(row.id, row.name)}
                 >
-                  <Ionicons name="trash-outline" size={20} color="#F44336" />
+                  <Text style={{ fontSize: 20 }}>🗑️</Text>
                   <Text style={[styles.actionButtonText, styles.deleteButtonText]}>Eliminar</Text>
                 </TouchableOpacity>
               </View>
@@ -2506,7 +2506,7 @@ function RowModal({ visible, row, sectors, onClose, onSuccess, currentFarm }) {
           <View style={styles.modalHeader}>
             <Text style={styles.modalTitle}>{row ? 'Editar' : 'Agregar'} Surco</Text>
             <TouchableOpacity onPress={onClose}>
-              <Ionicons name="close" size={24} color="#333" />
+              <Text style={{ fontSize: 24 }}>✖️</Text>
             </TouchableOpacity>
           </View>
           
@@ -2586,14 +2586,14 @@ function TreesScreen({ currentFarm, settings, onBack }) {
     <View style={styles.container}>
       <View style={styles.header}>
         <TouchableOpacity onPress={onBack}>
-          <Ionicons name="arrow-back" size={24} color="#333" />
+          <Text style={{ fontSize: 24 }}>←</Text>
         </TouchableOpacity>
         <Text style={styles.headerTitle}>Árboles</Text>
         <TouchableOpacity onPress={() => {
           setEditingTree(null);
           setShowModal(true);
         }}>
-          <Ionicons name="add-circle" size={28} color="#8BC34A" />
+          <Text style={{ fontSize: 28 }}>➕</Text>
         </TouchableOpacity>
       </View>
 
@@ -2667,11 +2667,11 @@ function TreeCard({ tree, onEdit, onDelete, currentFarm }) {
       <Text style={styles.cardDetail}>💚 Estado: {tree.healthStatus}</Text>
       <View style={styles.cardActions}>
         <TouchableOpacity style={styles.actionButton} onPress={onEdit}>
-          <Ionicons name="create-outline" size={20} color="#2196F3" />
+          <Text style={{ fontSize: 20 }}>✏️</Text>
           <Text style={styles.actionButtonText}>Editar</Text>
         </TouchableOpacity>
         <TouchableOpacity style={[styles.actionButton, styles.deleteButton]} onPress={onDelete}>
-          <Ionicons name="trash-outline" size={20} color="#F44336" />
+          <Text style={{ fontSize: 20 }}>🗑️</Text>
           <Text style={[styles.actionButtonText, styles.deleteButtonText]}>Eliminar</Text>
         </TouchableOpacity>
       </View>
@@ -2802,7 +2802,7 @@ function TreeModal({ visible, tree, settings, onClose, onSuccess, currentFarm })
           <View style={styles.modalHeader}>
             <Text style={styles.modalTitle}>{tree ? 'Editar' : 'Agregar'} Árbol</Text>
             <TouchableOpacity onPress={onClose}>
-              <Ionicons name="close" size={24} color="#333" />
+              <Text style={{ fontSize: 24 }}>✖️</Text>
             </TouchableOpacity>
           </View>
           
@@ -2932,11 +2932,11 @@ function TreeTypesScreen({ currentFarm, onBack }) {
     <View style={styles.container}>
       <View style={styles.header}>
         <TouchableOpacity onPress={onBack}>
-          <Ionicons name="arrow-back" size={24} color="#333" />
+          <Text style={{ fontSize: 24 }}>←</Text>
         </TouchableOpacity>
         <Text style={styles.headerTitle}>Tipos de Árbol</Text>
         <TouchableOpacity onPress={() => setShowModal(true)}>
-          <Ionicons name="add-circle" size={28} color="#FF9800" />
+          <Text style={{ fontSize: 28 }}>➕</Text>
         </TouchableOpacity>
       </View>
 
@@ -2944,7 +2944,7 @@ function TreeTypesScreen({ currentFarm, onBack }) {
         {treeTypes.map(type => (
           <View key={type.id} style={styles.card}>
             <View style={styles.cardHeader}>
-              <Ionicons name="list" size={24} color="#FF9800" />
+              <Text style={{ fontSize: 24 }}>☰</Text>
               <View style={styles.cardHeaderText}>
                 <Text style={styles.cardTitle}>{type.name}</Text>
                 <Text style={styles.cardSubtitle}>{type.scientificName}</Text>
@@ -2957,7 +2957,7 @@ function TreeTypesScreen({ currentFarm, onBack }) {
                 style={[styles.actionButton, styles.deleteButton]}
                 onPress={() => handleDelete(type.id, type.name)}
               >
-                <Ionicons name="trash-outline" size={20} color="#F44336" />
+                <Text style={{ fontSize: 20 }}>🗑️</Text>
                 <Text style={[styles.actionButtonText, styles.deleteButtonText]}>Eliminar</Text>
               </TouchableOpacity>
             </View>
@@ -3070,7 +3070,7 @@ function TreeTypeModal({ visible, onClose, onSuccess, currentFarm }) {
           <View style={styles.modalHeader}>
             <Text style={styles.modalTitle}>Agregar Tipo de Árbol</Text>
             <TouchableOpacity onPress={onClose}>
-              <Ionicons name="close" size={24} color="#333" />
+              <Text style={{ fontSize: 24 }}>✖️</Text>
             </TouchableOpacity>
           </View>
           
@@ -3225,7 +3225,7 @@ function ProductionScreen({ settings, currentFarm, onBack }) {
       <View style={styles.header}>
         {onBack && (
           <TouchableOpacity onPress={onBack}>
-            <Ionicons name="arrow-back" size={24} color="#333" />
+            <Text style={{ fontSize: 24 }}>←</Text>
           </TouchableOpacity>
         )}
         <Text style={styles.headerTitle}>Producción</Text>
@@ -3233,7 +3233,7 @@ function ProductionScreen({ settings, currentFarm, onBack }) {
           setEditingHarvest(null);
           setShowAddModal(true);
         }}>
-          <Ionicons name="add-circle" size={28} color="#795548" />
+          <Text style={{ fontSize: 28 }}>➕</Text>
         </TouchableOpacity>
       </View>
 
@@ -3560,7 +3560,7 @@ function AddHarvestModal({ visible, onClose, onSuccess, editingHarvest, currentF
           <View style={styles.modalHeader}>
             <Text style={styles.modalTitle}>{editingHarvest ? 'Editar' : 'Registrar'} Cosecha</Text>
             <TouchableOpacity onPress={onClose}>
-              <Ionicons name="close" size={24} color="#333" />
+              <Text style={{ fontSize: 24 }}>✖️</Text>
             </TouchableOpacity>
           </View>
           
@@ -3882,12 +3882,12 @@ const customersSnap = await db
       <View style={styles.header}>
         {onBack && (
           <TouchableOpacity onPress={onBack}>
-            <Ionicons name="arrow-back" size={24} color="#333" />
+            <Text style={{ fontSize: 24 }}>←</Text>
           </TouchableOpacity>
         )}
         <Text style={styles.headerTitle}>Ventas</Text>
         <TouchableOpacity onPress={() => onNavigate('sales')}>
-          <Ionicons name="add-circle" size={28} color="#4CAF50" />
+          <Text style={{ fontSize: 28 }}>➕</Text>
         </TouchableOpacity>
       </View>
 
@@ -3896,7 +3896,7 @@ const customersSnap = await db
           <View style={styles.budgetHeader}>
             <Text style={styles.budgetTitle}>Meta del Mes</Text>
             <TouchableOpacity onPress={() => onNavigate('goal')}>
-              <Ionicons name="create" size={20} color="#666" />
+              <Text style={{ fontSize: 20 }}>✏️</Text>
             </TouchableOpacity>
           </View>
           <View style={styles.budgetAmounts}>
@@ -3986,11 +3986,11 @@ const customersSnap = await db
 
         <View style={styles.quickActions}>
           <TouchableOpacity style={styles.quickAction} onPress={() => onNavigate('customers')}>
-            <Ionicons name="people" size={40} color="#2196F3" />
+            <Text style={{ fontSize: 40 }}>👥</Text>
             <Text style={styles.quickActionText}>Clientes</Text>
           </TouchableOpacity>
           <TouchableOpacity style={styles.quickAction} onPress={() => onNavigate('sales')}>
-            <Ionicons name="cart" size={40} color="#4CAF50" />
+            <Text style={{ fontSize: 40 }}>🛒</Text>
             <Text style={styles.quickActionText}>Ver Ventas</Text>
           </TouchableOpacity>
         </View>
@@ -4041,11 +4041,11 @@ function CustomersScreen({ onBack, currentFarm }) {
     <View style={styles.container}>
       <View style={styles.header}>
         <TouchableOpacity onPress={onBack}>
-          <Ionicons name="arrow-back" size={24} color="#333" />
+          <Text style={{ fontSize: 24 }}>←</Text>
         </TouchableOpacity>
         <Text style={styles.headerTitle}>Clientes</Text>
         <TouchableOpacity onPress={() => { setEditingCustomer(null); setShowModal(true); }}>
-          <Ionicons name="add-circle" size={28} color="#2196F3" />
+          <Text style={{ fontSize: 28 }}>➕</Text>
         </TouchableOpacity>
       </View>
 
@@ -4053,7 +4053,7 @@ function CustomersScreen({ onBack, currentFarm }) {
         {customers.map(customer => (
           <View key={customer.id} style={styles.card}>
             <View style={styles.cardHeader}>
-              <Ionicons name="person" size={24} color="#2196F3" />
+              <Text style={{ fontSize: 24 }}>👤</Text>
               <View style={styles.cardHeaderText}>
                 <Text style={styles.cardTitle}>{customer.name}</Text>
                 {customer.phone && <Text style={styles.cardSubtitle}>📞 {customer.phone}</Text>}
@@ -4063,11 +4063,11 @@ function CustomersScreen({ onBack, currentFarm }) {
             {customer.address && <Text style={styles.cardDetail}>📍 {customer.address}</Text>}
             <View style={styles.cardActions}>
               <TouchableOpacity style={styles.actionButton} onPress={() => { setEditingCustomer(customer); setShowModal(true); }}>
-                <Ionicons name="create-outline" size={20} color="#2196F3" />
+                <Text style={{ fontSize: 20 }}>✏️</Text>
                 <Text style={styles.actionButtonText}>Editar</Text>
               </TouchableOpacity>
               <TouchableOpacity style={[styles.actionButton, styles.deleteButton]} onPress={() => handleDelete(customer.id, customer.name)}>
-                <Ionicons name="trash-outline" size={20} color="#F44336" />
+                <Text style={{ fontSize: 20 }}>🗑️</Text>
                 <Text style={[styles.actionButtonText, styles.deleteButtonText]}>Eliminar</Text>
               </TouchableOpacity>
             </View>
@@ -4140,7 +4140,7 @@ function CustomerModal({ visible, customer, onClose, onSuccess, currentFarm }) {
           <View style={styles.modalHeader}>
             <Text style={styles.modalTitle}>{customer ? 'Editar' : 'Agregar'} Cliente</Text>
             <TouchableOpacity onPress={onClose}>
-              <Ionicons name="close" size={24} color="#333" />
+              <Text style={{ fontSize: 24 }}>✖️</Text>
             </TouchableOpacity>
           </View>
           
@@ -4200,11 +4200,11 @@ function SalesListScreen({ settings, onBack, currentFarm }) {
     <View style={styles.container}>
       <View style={styles.header}>
         <TouchableOpacity onPress={onBack}>
-          <Ionicons name="arrow-back" size={24} color="#333" />
+          <Text style={{ fontSize: 24 }}>←</Text>
         </TouchableOpacity>
         <Text style={styles.headerTitle}>Historial de Ventas</Text>
         <TouchableOpacity onPress={() => { setEditingSale(null); setShowModal(true); }}>
-          <Ionicons name="add-circle" size={28} color="#4CAF50" />
+          <Text style={{ fontSize: 28 }}>➕</Text>
         </TouchableOpacity>
       </View>
 
@@ -4275,11 +4275,11 @@ function SaleCard({ sale, settings, onEdit, onDelete, currentFarm }) {
 
       <View style={styles.cardActions}>
         <TouchableOpacity style={styles.actionButton} onPress={onEdit}>
-          <Ionicons name="create-outline" size={20} color="#2196F3" />
+          <Text style={{ fontSize: 20 }}>✏️</Text>
           <Text style={styles.actionButtonText}>Editar</Text>
         </TouchableOpacity>
         <TouchableOpacity style={[styles.actionButton, styles.deleteButton]} onPress={onDelete}>
-          <Ionicons name="trash-outline" size={20} color="#F44336" />
+          <Text style={{ fontSize: 20 }}>🗑️</Text>
           <Text style={[styles.actionButtonText, styles.deleteButtonText]}>Eliminar</Text>
         </TouchableOpacity>
       </View>
@@ -4413,7 +4413,7 @@ function SaleModal({ visible, sale, settings, onClose, onSuccess, currentFarm })
           <View style={styles.modalHeader}>
             <Text style={styles.modalTitle}>{sale ? 'Editar' : 'Registrar'} Venta</Text>
             <TouchableOpacity onPress={onClose}>
-              <Ionicons name="close" size={24} color="#333" />
+              <Text style={{ fontSize: 24 }}>✖️</Text>
             </TouchableOpacity>
           </View>
           
@@ -4504,11 +4504,11 @@ function SalesGoalScreen({ settings, currentFarm, onBack }) {
     <View style={styles.container}>
       <View style={styles.header}>
         <TouchableOpacity onPress={onBack}>
-          <Ionicons name="arrow-back" size={24} color="#333" />
+          <Text style={{ fontSize: 24 }}>←</Text>
         </TouchableOpacity>
         <Text style={styles.headerTitle}>Metas de Ventas</Text>
         <TouchableOpacity onPress={() => setShowModal(true)}>
-          <Ionicons name="add-circle" size={28} color="#4CAF50" />
+          <Text style={{ fontSize: 28 }}>➕</Text>
         </TouchableOpacity>
       </View>
 
@@ -4516,7 +4516,7 @@ function SalesGoalScreen({ settings, currentFarm, onBack }) {
         {goals.map(goal => (
           <View key={goal.id} style={styles.card}>
             <View style={styles.cardHeader}>
-              <Ionicons name="trophy" size={24} color="#4CAF50" />
+              <Text style={{ fontSize: 24 }}>🏆</Text>
               <View style={styles.cardHeaderText}>
                 <Text style={styles.cardTitle}>{goal.month}</Text>
                 <Text style={styles.cardSubtitle}>{settings.currency}{goal.amount.toFixed(0)}</Text>
@@ -4591,7 +4591,7 @@ function SalesGoalModal({ visible, settings, currentFarm, onClose, onSuccess }) 
           <View style={styles.modalHeader}>
             <Text style={styles.modalTitle}>Registrar Meta</Text>
             <TouchableOpacity onPress={onClose}>
-              <Ionicons name="close" size={24} color="#333" />
+              <Text style={{ fontSize: 24 }}>✖️</Text>
             </TouchableOpacity>
           </View>
           
@@ -4758,12 +4758,12 @@ const monthBudget = budgetSnap.empty ? 0 : budgetSnap.docs[0].data().amount;
       <View style={styles.header}>
         {onBack && (
           <TouchableOpacity onPress={onBack}>
-            <Ionicons name="arrow-back" size={24} color="#333" />
+            <Text style={{ fontSize: 24 }}>←</Text>
           </TouchableOpacity>
         )}
         <Text style={styles.headerTitle}>Gastos</Text>
         <TouchableOpacity onPress={() => onNavigate('expenses')}>
-          <Ionicons name="add-circle" size={28} color="#F44336" />
+          <Text style={{ fontSize: 28 }}>➕</Text>
         </TouchableOpacity>
       </View>
 
@@ -4772,7 +4772,7 @@ const monthBudget = budgetSnap.empty ? 0 : budgetSnap.docs[0].data().amount;
           <View style={styles.budgetHeader}>
             <Text style={styles.budgetTitle}>Presupuesto del Mes</Text>
             <TouchableOpacity onPress={() => onNavigate('budget')}>
-              <Ionicons name="create" size={20} color="#666" />
+              <Text style={{ fontSize: 20 }}>✏️</Text>
             </TouchableOpacity>
           </View>
           <View style={styles.budgetAmounts}>
@@ -4824,15 +4824,15 @@ const monthBudget = budgetSnap.empty ? 0 : budgetSnap.docs[0].data().amount;
 
         <View style={styles.quickActions}>
           <TouchableOpacity style={styles.quickAction} onPress={() => onNavigate('categories')}>
-            <Ionicons name="list" size={40} color="#9C27B0" />
+            <Text style={{ fontSize: 40 }}>☰</Text>
             <Text style={styles.quickActionText}>Categorías</Text>
           </TouchableOpacity>
           <TouchableOpacity style={styles.quickAction} onPress={() => onNavigate('budget')}>
-            <Ionicons name="wallet" size={40} color="#2196F3" />
+            <Text style={{ fontSize: 40 }}>💰</Text>
             <Text style={styles.quickActionText}>Presupuesto</Text>
           </TouchableOpacity>
           <TouchableOpacity style={styles.quickAction} onPress={() => onNavigate('expenses')}>
-            <Ionicons name="receipt" size={40} color="#F44336" />
+            <Text style={{ fontSize: 40 }}>🧾</Text>
             <Text style={styles.quickActionText}>Ver Gastos</Text>
           </TouchableOpacity>
         </View>
@@ -4873,11 +4873,11 @@ function ExpenseCategoriesScreen({ onBack, currentFarm }) {
     <View style={styles.container}>
       <View style={styles.header}>
         <TouchableOpacity onPress={onBack}>
-          <Ionicons name="arrow-back" size={24} color="#333" />
+          <Text style={{ fontSize: 24 }}>←</Text>
         </TouchableOpacity>
         <Text style={styles.headerTitle}>Categorías de Gasto</Text>
         <TouchableOpacity onPress={() => setShowModal(true)}>
-          <Ionicons name="add-circle" size={28} color="#9C27B0" />
+          <Text style={{ fontSize: 28 }}>➕</Text>
         </TouchableOpacity>
       </View>
 
@@ -4885,7 +4885,7 @@ function ExpenseCategoriesScreen({ onBack, currentFarm }) {
         {categories.map(cat => (
           <View key={cat.id} style={styles.card}>
             <View style={styles.cardHeader}>
-              <Ionicons name="pricetag" size={24} color="#9C27B0" />
+              <Text style={{ fontSize: 24 }}>🏷️</Text>
               <View style={styles.cardHeaderText}>
                 <Text style={styles.cardTitle}>{cat.name}</Text>
                 {cat.description && <Text style={styles.cardSubtitle}>{cat.description}</Text>}
@@ -4893,7 +4893,7 @@ function ExpenseCategoriesScreen({ onBack, currentFarm }) {
             </View>
             <View style={styles.cardActions}>
               <TouchableOpacity style={[styles.actionButton, styles.deleteButton]} onPress={() => handleDelete(cat.id, cat.name)}>
-                <Ionicons name="trash-outline" size={20} color="#F44336" />
+                <Text style={{ fontSize: 20 }}>🗑️</Text>
                 <Text style={[styles.actionButtonText, styles.deleteButtonText]}>Eliminar</Text>
               </TouchableOpacity>
             </View>
@@ -4986,7 +4986,7 @@ function ExpenseCategoryModal({ visible, onClose, onSuccess, currentFarm }) {
           <View style={styles.modalHeader}>
             <Text style={styles.modalTitle}>Agregar Categoría</Text>
             <TouchableOpacity onPress={onClose}>
-              <Ionicons name="close" size={24} color="#333" />
+              <Text style={{ fontSize: 24 }}>✖️</Text>
             </TouchableOpacity>
           </View>
           
@@ -5038,11 +5038,11 @@ function BudgetScreen({ settings, onBack, currentFarm }) {
     <View style={styles.container}>
       <View style={styles.header}>
         <TouchableOpacity onPress={onBack}>
-          <Ionicons name="arrow-back" size={24} color="#333" />
+          <Text style={{ fontSize: 24 }}>←</Text>
         </TouchableOpacity>
         <Text style={styles.headerTitle}>Presupuestos</Text>
         <TouchableOpacity onPress={() => setShowModal(true)}>
-          <Ionicons name="add-circle" size={28} color="#2196F3" />
+          <Text style={{ fontSize: 28 }}>➕</Text>
         </TouchableOpacity>
       </View>
 
@@ -5115,7 +5115,7 @@ function BudgetModal({ visible, settings, onClose, onSuccess, currentFarm }) {
           <View style={styles.modalHeader}>
             <Text style={styles.modalTitle}>Registrar Presupuesto</Text>
             <TouchableOpacity onPress={onClose}>
-              <Ionicons name="close" size={24} color="#333" />
+              <Text style={{ fontSize: 24 }}>✖️</Text>
             </TouchableOpacity>
           </View>
           
@@ -5169,11 +5169,11 @@ function ExpensesListScreen({ settings, onBack, currentFarm }) {
     <View style={styles.container}>
       <View style={styles.header}>
         <TouchableOpacity onPress={onBack}>
-          <Ionicons name="arrow-back" size={24} color="#333" />
+          <Text style={{ fontSize: 24 }}>←</Text>
         </TouchableOpacity>
         <Text style={styles.headerTitle}>Historial de Gastos</Text>
         <TouchableOpacity onPress={() => { setEditingExpense(null); setShowModal(true); }}>
-          <Ionicons name="add-circle" size={28} color="#F44336" />
+          <Text style={{ fontSize: 28 }}>➕</Text>
         </TouchableOpacity>
       </View>
 
@@ -5192,14 +5192,14 @@ function ExpenseCard({ expense, settings, onEdit, onDelete, currentFarm }) {
   return (
     <View style={styles.card}>
       <View style={styles.cardHeader}>
-        <Ionicons name="receipt" size={24} color="#F44336" />
+        <Text style={{ fontSize: 24 }}>🧾</Text>
         <View style={styles.cardHeaderText}>
           <Text style={styles.cardTitle}>{expense.concept}</Text>
           <Text style={styles.cardSubtitle}>{expense.categoryName}</Text>
         </View>
         {expense.isRecurring && (
           <View style={styles.recurringBadge}>
-            <Ionicons name="repeat" size={14} color="white" />
+            <Text style={{ fontSize: 14 }}>🔄</Text>
             <Text style={styles.recurringBadgeText}>Recurrente</Text>
           </View>
         )}
@@ -5234,11 +5234,11 @@ function ExpenseCard({ expense, settings, onEdit, onDelete, currentFarm }) {
 
       <View style={styles.cardActions}>
         <TouchableOpacity style={styles.actionButton} onPress={onEdit}>
-          <Ionicons name="create-outline" size={20} color="#2196F3" />
+          <Text style={{ fontSize: 20 }}>✏️</Text>
           <Text style={styles.actionButtonText}>Editar</Text>
         </TouchableOpacity>
         <TouchableOpacity style={[styles.actionButton, styles.deleteButton]} onPress={onDelete}>
-          <Ionicons name="trash-outline" size={20} color="#F44336" />
+          <Text style={{ fontSize: 20 }}>🗑️</Text>
           <Text style={[styles.actionButtonText, styles.deleteButtonText]}>Eliminar</Text>
         </TouchableOpacity>
       </View>
@@ -5389,7 +5389,7 @@ function ExpenseModal({ visible, expense, settings, onClose, onSuccess, currentF
           <View style={styles.modalHeader}>
             <Text style={styles.modalTitle}>{expense ? 'Editar' : 'Registrar'} Gasto</Text>
             <TouchableOpacity onPress={onClose}>
-              <Ionicons name="close" size={24} color="#333" />
+              <Text style={{ fontSize: 24 }}>✖️</Text>
             </TouchableOpacity>
           </View>
           
@@ -5446,7 +5446,7 @@ function ExpenseModal({ visible, expense, settings, onClose, onSuccess, currentF
 
             <Text style={styles.label}>Aplicación del Gasto</Text>
             <TouchableOpacity style={styles.addApplicationButton} onPress={() => setShowApplicationModal(true)}>
-              <Ionicons name="add-circle" size={24} color="#4CAF50" />
+              <Text style={{ fontSize: 24 }}>➕</Text>
               <Text style={styles.addApplicationText}>Agregar Destino</Text>
             </TouchableOpacity>
             
@@ -5456,7 +5456,7 @@ function ExpenseModal({ visible, expense, settings, onClose, onSuccess, currentF
                   {app.type === 'finca' ? 'Finca Completa' : app.type === 'sector' ? `Sector: ${app.sectorName}` : app.type === 'row' ? `Surco: ${app.rowName}` : `Árbol: #${app.treeNumber}`}
                 </Text>
                 <TouchableOpacity onPress={() => removeApplication(index)}>
-                  <Ionicons name="close-circle" size={24} color="#F44336" />
+                  <Text style={{ fontSize: 24 }}>✖️</Text>
                 </TouchableOpacity>
               </View>
             ))}
@@ -5522,7 +5522,7 @@ function ApplicationModal({ visible, sectors, rows, trees, onClose, onAdd }) {
           <View style={styles.modalHeader}>
             <Text style={styles.modalTitle}>Agregar Destino</Text>
             <TouchableOpacity onPress={onClose}>
-              <Ionicons name="close" size={24} color="#333" />
+              <Text style={{ fontSize: 24 }}>✖️</Text>
             </TouchableOpacity>
           </View>
           
@@ -5641,7 +5641,7 @@ function DatePickerInput({ value, onChangeDate, placeholder = "YYYY-MM-DD", styl
         style={[styles.input, styles.datePickerInput, style]}
         onPress={() => setShowPicker(true)}
       >
-        <Ionicons name="calendar" size={20} color="#666" />
+        <Text style={{ fontSize: 20 }}>📅</Text>
         <Text style={[styles.datePickerText, !value && styles.datePickerPlaceholder]}>
           {value || placeholder}
         </Text>
@@ -5653,7 +5653,7 @@ function DatePickerInput({ value, onChangeDate, placeholder = "YYYY-MM-DD", styl
             <View style={styles.datePickerHeader}>
               <Text style={styles.datePickerTitle}>Seleccionar Fecha</Text>
               <TouchableOpacity onPress={() => setShowPicker(false)}>
-                <Ionicons name="close" size={24} color="#333" />
+                <Text style={{ fontSize: 24 }}>✖️</Text>
               </TouchableOpacity>
             </View>
 
@@ -5663,7 +5663,7 @@ function DatePickerInput({ value, onChangeDate, placeholder = "YYYY-MM-DD", styl
                 d.setMonth(d.getMonth() - 1);
                 setTempDate(formatDate(d));
               }}>
-                <Ionicons name="chevron-back" size={24} color="#4CAF50" />
+                <Text style={{ fontSize: 24 }}>←</Text>
               </TouchableOpacity>
               <Text style={styles.datePickerMonthText}>
                 {parseDateString(tempDate).toLocaleDateString('es', { month: 'long', year: 'numeric' })}
@@ -5673,7 +5673,7 @@ function DatePickerInput({ value, onChangeDate, placeholder = "YYYY-MM-DD", styl
                 d.setMonth(d.getMonth() + 1);
                 setTempDate(formatDate(d));
               }}>
-                <Ionicons name="chevron-forward" size={24} color="#4CAF50" />
+                <Text style={{ fontSize: 24 }}>→</Text>
               </TouchableOpacity>
             </View>
 
@@ -5810,12 +5810,12 @@ function TasksCalendarView({ currentFarm, onNavigate, onBack }) {
       <View style={styles.header}>
         {onBack && (
           <TouchableOpacity onPress={onBack}>
-            <Ionicons name="arrow-back" size={24} color="#333" />
+            <Text style={{ fontSize: 24 }}>←</Text>
           </TouchableOpacity>
         )}
         <Text style={styles.headerTitle}>Tareas</Text>
         <TouchableOpacity onPress={() => onNavigate('dashboard')}>
-          <Ionicons name="stats-chart" size={24} color="#333" />
+          <Text style={{ fontSize: 24 }}>📊</Text>
         </TouchableOpacity>
       </View>
 
@@ -5823,13 +5823,13 @@ function TasksCalendarView({ currentFarm, onNavigate, onBack }) {
         <View style={styles.calendarCard}>
           <View style={styles.calendarHeader}>
             <TouchableOpacity onPress={() => changeMonth(-1)}>
-              <Ionicons name="chevron-back" size={28} color="#4CAF50" />
+              <Text style={{ fontSize: 28 }}>←</Text>
             </TouchableOpacity>
             <Text style={styles.calendarHeaderText}>
               {new Date(year, month).toLocaleDateString('es', { month: 'long', year: 'numeric' })}
             </Text>
             <TouchableOpacity onPress={() => changeMonth(1)}>
-              <Ionicons name="chevron-forward" size={28} color="#4CAF50" />
+              <Text style={{ fontSize: 28 }}>→</Text>
             </TouchableOpacity>
           </View>
 
@@ -5877,13 +5877,13 @@ function TasksCalendarView({ currentFarm, onNavigate, onBack }) {
             style={styles.addTaskButton}
             onPress={() => setShowAddModal(true)}
           >
-            <Ionicons name="add-circle" size={32} color="#4CAF50" />
+            <Text style={{ fontSize: 32 }}>➕</Text>
           </TouchableOpacity>
         </View>
 
         {tasks.length === 0 ? (
           <View style={styles.emptyState}>
-            <Ionicons name="checkmark-done-circle-outline" size={64} color="#ccc" />
+            <Text style={{ fontSize: 64 }}>✅</Text>
             <Text style={styles.emptyText}>No hay tareas para este día</Text>
           </View>
         ) : (
@@ -5985,7 +5985,7 @@ function TaskCard({ task, onUpdate, currentFarm }) {
           </Text>
           {task.status === 'completed' && (
             <View style={styles.completedBadge}>
-              <Ionicons name="checkmark-circle" size={16} color="#4CAF50" />
+              <Text style={{ fontSize: 16 }}>✅</Text>
               <Text style={styles.completedText}>Completada</Text>
             </View>
           )}
@@ -6000,7 +6000,7 @@ function TaskCard({ task, onUpdate, currentFarm }) {
 
       {task.isRecurring && (
         <View style={styles.recurringBadge}>
-          <Ionicons name="repeat" size={14} color="white" />
+          <Text style={{ fontSize: 14 }}>🔄</Text>
           <Text style={styles.recurringBadgeText}>Recurrente - {task.frequency}</Text>
         </View>
       )}
@@ -6011,14 +6011,14 @@ function TaskCard({ task, onUpdate, currentFarm }) {
             style={[styles.actionButton, { backgroundColor: '#E8F5E9' }]}
             onPress={handleComplete}
           >
-            <Ionicons name="checkmark-circle" size={20} color="#4CAF50" />
+            <Text style={{ fontSize: 20 }}>✅</Text>
             <Text style={[styles.actionButtonText, { color: '#4CAF50' }]}>Completar</Text>
           </TouchableOpacity>
           <TouchableOpacity
             style={[styles.actionButton, { backgroundColor: '#FFF3E0' }]}
             onPress={handlePostpone}
           >
-            <Ionicons name="time" size={20} color="#FF9800" />
+            <Text style={{ fontSize: 20 }}>⏰</Text>
             <Text style={[styles.actionButtonText, { color: '#FF9800' }]}>Posponer</Text>
           </TouchableOpacity>
         </View>
@@ -6158,7 +6158,7 @@ function TaskModal({ visible, initialDate, task, onClose, onSuccess, currentFarm
           <View style={styles.modalHeader}>
             <Text style={styles.modalTitle}>{task ? 'Editar' : 'Nueva'} Tarea</Text>
             <TouchableOpacity onPress={onClose}>
-              <Ionicons name="close" size={24} color="#333" />
+              <Text style={{ fontSize: 24 }}>✖️</Text>
             </TouchableOpacity>
           </View>
 
@@ -6327,7 +6327,7 @@ function TasksDashboard({ currentFarm, onBack }) {
     <View style={styles.container}>
       <View style={styles.header}>
         <TouchableOpacity onPress={onBack}>
-          <Ionicons name="arrow-back" size={24} color="#333" />
+          <Text style={{ fontSize: 24 }}>←</Text>
         </TouchableOpacity>
         <Text style={styles.headerTitle}>Dashboard de Tareas</Text>
         <View style={{ width: 24 }} />
@@ -6336,22 +6336,22 @@ function TasksDashboard({ currentFarm, onBack }) {
       <ScrollView style={styles.content}>
         <View style={styles.metricsGrid}>
           <View style={[styles.metricCard, { borderLeftColor: '#4CAF50' }]}>
-            <Ionicons name="checkmark-done" size={24} color="#4CAF50" />
+            <Text style={{ fontSize: 24 }}>✅</Text>
             <Text style={styles.metricValue}>{stats.completedTasks}</Text>
             <Text style={styles.metricTitle}>Completadas</Text>
           </View>
           <View style={[styles.metricCard, { borderLeftColor: '#FF9800' }]}>
-            <Ionicons name="time" size={24} color="#FF9800" />
+            <Text style={{ fontSize: 24 }}>⏰</Text>
             <Text style={styles.metricValue}>{stats.pendingTasks}</Text>
             <Text style={styles.metricTitle}>Pendientes</Text>
           </View>
           <View style={[styles.metricCard, { borderLeftColor: '#F44336' }]}>
-            <Ionicons name="alert-circle" size={24} color="#F44336" />
+            <Text style={{ fontSize: 24 }}>⚠️</Text>
             <Text style={styles.metricValue}>{stats.overdueTasks}</Text>
             <Text style={styles.metricTitle}>Atrasadas</Text>
           </View>
           <View style={[styles.metricCard, { borderLeftColor: '#2196F3' }]}>
-            <Ionicons name="pie-chart" size={24} color="#2196F3" />
+            <Text style={{ fontSize: 24 }}>📊</Text>
             <Text style={styles.metricValue}>{stats.completionRate.toFixed(0)}%</Text>
             <Text style={styles.metricTitle}>Tasa Completado</Text>
           </View>
@@ -6649,7 +6649,7 @@ function ReportsScreen({ onBack, currentFarm }) {
       <View style={styles.header}>
         {onBack && (
           <TouchableOpacity onPress={onBack}>
-            <Ionicons name="arrow-back" size={24} color="#333" />
+            <Text style={{ fontSize: 24 }}>←</Text>
           </TouchableOpacity>
         )}
         <Text style={styles.headerTitle}>Reportes</Text>
@@ -6843,7 +6843,7 @@ function ReportsScreen({ onBack, currentFarm }) {
         {/* Summary Box */}
         <View style={styles.summaryBox}>
           <View style={styles.summaryHeader}>
-            <Ionicons name="information-circle" size={24} color="#2196F3" />
+            <Text style={{ fontSize: 24 }}>ℹ️</Text>
             <Text style={styles.summaryTitle}>Resumen del Período</Text>
           </View>
           <Text style={styles.summaryText}>
@@ -6873,14 +6873,14 @@ function MapViewScreen({ onBack }) {
       <View style={styles.header}>
         {onBack && (
           <TouchableOpacity onPress={onBack}>
-            <Ionicons name="arrow-back" size={24} color="#333" />
+            <Text style={{ fontSize: 24 }}>←</Text>
           </TouchableOpacity>
         )}
         <Text style={styles.headerTitle}>Mapa</Text>
         <View style={{ width: 24 }} />
       </View>
       <View style={[styles.container, styles.centerContent]}>
-        <Ionicons name="map" size={64} color="#ccc" />
+        <Text style={{ fontSize: 64 }}>🗺️</Text>
         <Text style={styles.emptyText}>Vista de Mapa</Text>
       </View>
     </View>
@@ -7090,7 +7090,7 @@ El usuario debe:
       <View style={{ backgroundColor: 'white', padding: 15, borderBottomWidth: 1, borderBottomColor: '#e0e0e0' }}>
         <View style={{ flexDirection: 'row', alignItems: 'center' }}>
           <TouchableOpacity onPress={onBack}>
-            <Ionicons name="arrow-back" size={24} color="#333" />
+            <Text style={{ fontSize: 24 }}>←</Text>
           </TouchableOpacity>
           <Text style={{ fontSize: 20, fontWeight: 'bold', marginLeft: 15, flex: 1 }}>
             Miembros de {currentFarm?.name}
@@ -7099,7 +7099,7 @@ El usuario debe:
             onPress={() => setShowInviteModal(true)}
             style={{ backgroundColor: '#4CAF50', paddingHorizontal: 15, paddingVertical: 8, borderRadius: 8 }}
           >
-            <Ionicons name="person-add" size={20} color="white" />
+            <Text style={{ fontSize: 20 }}>👤➕</Text>
           </TouchableOpacity>
         </View>
       </View>
@@ -7151,7 +7151,7 @@ El usuario debe:
                     }}
                     style={{ padding: 8 }}
                   >
-                    <Ionicons name="create-outline" size={20} color="#2196F3" />
+                    <Text style={{ fontSize: 20 }}>✏️</Text>
                   </TouchableOpacity>
 
                   {/* Remove Member */}
@@ -7160,7 +7160,7 @@ El usuario debe:
                       onPress={() => removeMember(member.uid, member.email)}
                       style={{ padding: 8 }}
                     >
-                      <Ionicons name="trash-outline" size={20} color="#F44336" />
+                      <Text style={{ fontSize: 20 }}>🗑️</Text>
                     </TouchableOpacity>
                   )}
                 </View>
@@ -7321,7 +7321,7 @@ function SettingsScreen({
       {onBack && (
         <View style={styles.header}>
           <TouchableOpacity onPress={onBack}>
-            <Ionicons name="arrow-back" size={24} color="#333" />
+            <Text style={{ fontSize: 24 }}>←</Text>
           </TouchableOpacity>
           <Text style={styles.headerTitle}>Configuración</Text>
           <View style={{ width: 24 }} />
@@ -7425,7 +7425,7 @@ function SettingsScreen({
                 Lat: {settings?.location?.lat?.toFixed(4) || '14.6349'}, Lon: {settings?.location?.lon?.toFixed(4) || '-90.5069'}
               </Text>
             </View>
-            <Ionicons name="chevron-forward" size={20} color="#999" />
+            <Text style={{ fontSize: 20 }}>→</Text>
           </TouchableOpacity>
         </View>
 
@@ -7442,42 +7442,42 @@ function SettingsScreen({
       style={styles.adminButton}
       onPress={() => onNavigate('PlatformMetrics')}
     >
-      <Ionicons name="analytics" size={24} color="#9C27B0" />
+      <Text style={{ fontSize: 24 }}>📈</Text>
       <View style={{ flex: 1, marginLeft: 15 }}>
         <Text style={styles.adminButtonTitle}>Métricas de Plataforma</Text>
         <Text style={styles.adminButtonSubtitle}>
           Usuarios, descargas, retención, ingresos
         </Text>
       </View>
-      <Ionicons name="chevron-forward" size={20} color="#999" />
+      <Text style={{ fontSize: 20 }}>→</Text>
     </TouchableOpacity>
     
     <TouchableOpacity
       style={styles.adminButton}
       onPress={() => onNavigate('AdminMetrics')}
     >
-      <Ionicons name="stats-chart" size={24} color="#2196F3" />
+      <Text style={{ fontSize: 24 }}>📊</Text>
       <View style={{ flex: 1, marginLeft: 15 }}>
         <Text style={styles.adminButtonTitle}>Solicitudes Premium</Text>
         <Text style={styles.adminButtonSubtitle}>
           Ver y gestionar solicitudes
         </Text>
       </View>
-      <Ionicons name="chevron-forward" size={20} color="#999" />
+      <Text style={{ fontSize: 20 }}>→</Text>
     </TouchableOpacity>
     
     <TouchableOpacity
       style={styles.adminButton}
       onPress={() => onNavigate('ActivatePremium')}
     >
-      <Ionicons name="key" size={24} color="#FF9800" />
+      <Text style={{ fontSize: 24 }}>🔑</Text>
       <View style={{ flex: 1, marginLeft: 15 }}>
         <Text style={styles.adminButtonTitle}>Activar Premium Manual</Text>
         <Text style={styles.adminButtonSubtitle}>
           Activar/desactivar usuarios premium
         </Text>
       </View>
-      <Ionicons name="chevron-forward" size={20} color="#999" />
+      <Text style={{ fontSize: 20 }}>→</Text>
     </TouchableOpacity>
   </View>
 )}
@@ -7723,7 +7723,7 @@ function InventoryScreen({ onBack, currentFarm }) {
       <View style={styles.container}>
         <View style={styles.header}>
           <TouchableOpacity onPress={onBack}>
-            <Ionicons name="arrow-back" size={24} color="#333" />
+            <Text style={{ fontSize: 24 }}>←</Text>
           </TouchableOpacity>
           <Text style={styles.headerTitle}>Inventario</Text>
           <View style={{ width: 24 }} />
@@ -7740,7 +7740,7 @@ function InventoryScreen({ onBack, currentFarm }) {
       <View style={styles.container}>
         <View style={styles.header}>
           <TouchableOpacity onPress={() => { setView('list'); resetForm(); }}>
-            <Ionicons name="arrow-back" size={24} color="#333" />
+            <Text style={{ fontSize: 24 }}>←</Text>
           </TouchableOpacity>
           <Text style={styles.headerTitle}>{editingItem ? 'Editar' : 'Nuevo'} Producto</Text>
           <View style={{ width: 24 }} />
@@ -7836,11 +7836,11 @@ function InventoryScreen({ onBack, currentFarm }) {
     <View style={styles.container}>
       <View style={styles.header}>
         <TouchableOpacity onPress={onBack}>
-          <Ionicons name="arrow-back" size={24} color="#333" />
+          <Text style={{ fontSize: 24 }}>←</Text>
         </TouchableOpacity>
         <Text style={styles.headerTitle}>Inventario</Text>
         <TouchableOpacity onPress={() => setView('add')}>
-          <Ionicons name="add-circle" size={28} color="#4CAF50" />
+          <Text style={{ fontSize: 28 }}>➕</Text>
         </TouchableOpacity>
       </View>
 
@@ -7893,7 +7893,7 @@ function InventoryScreen({ onBack, currentFarm }) {
       <ScrollView style={styles.content}>
         {filteredItems.length === 0 ? (
           <View style={{ padding: 40, alignItems: 'center' }}>
-            <Ionicons name="cube-outline" size={64} color="#ccc" />
+            <Text style={{ fontSize: 64 }}>📦</Text>
             <Text style={{ marginTop: 20, color: '#999', fontSize: 16 }}>No hay productos</Text>
             <TouchableOpacity style={[styles.button, { marginTop: 20 }]} onPress={() => setView('add')}>
               <Text style={styles.buttonText}>Agregar Primer Producto</Text>
@@ -7920,10 +7920,10 @@ function InventoryScreen({ onBack, currentFarm }) {
                   </View>
                   <View style={{ flexDirection: 'row', gap: 10 }}>
                     <TouchableOpacity onPress={() => handleEdit(item)}>
-                      <Ionicons name="pencil" size={20} color="#2196F3" />
+                      <Text style={{ fontSize: 20 }}>✏️</Text>
                     </TouchableOpacity>
                     <TouchableOpacity onPress={() => handleDelete(item)}>
-                      <Ionicons name="trash" size={20} color="#F44336" />
+                      <Text style={{ fontSize: 20 }}>🗑️</Text>
                     </TouchableOpacity>
                   </View>
                 </View>
@@ -8256,7 +8256,7 @@ function EmployeesScreen({ onBack, currentFarm }) {
       <View style={styles.container}>
         <View style={styles.header}>
           <TouchableOpacity onPress={onBack}>
-            <Ionicons name="arrow-back" size={24} color="#333" />
+            <Text style={{ fontSize: 24 }}>←</Text>
           </TouchableOpacity>
           <Text style={styles.headerTitle}>Empleados</Text>
           <View style={{ width: 24 }} />
@@ -8273,7 +8273,7 @@ function EmployeesScreen({ onBack, currentFarm }) {
       <View style={styles.container}>
         <View style={styles.header}>
           <TouchableOpacity onPress={() => { setView('list'); resetForm(); }}>
-            <Ionicons name="arrow-back" size={24} color="#333" />
+            <Text style={{ fontSize: 24 }}>←</Text>
           </TouchableOpacity>
           <Text style={styles.headerTitle}>{editingEmployee ? 'Editar' : 'Nuevo'} Empleado</Text>
           <View style={{ width: 24 }} />
@@ -8389,7 +8389,7 @@ function EmployeesScreen({ onBack, currentFarm }) {
       <View style={styles.container}>
         <View style={styles.header}>
           <TouchableOpacity onPress={() => setView('list')}>
-            <Ionicons name="arrow-back" size={24} color="#333" />
+            <Text style={{ fontSize: 24 }}>←</Text>
           </TouchableOpacity>
           <Text style={styles.headerTitle}>Planilla</Text>
           <View style={{ width: 24 }} />
@@ -8444,11 +8444,11 @@ function EmployeesScreen({ onBack, currentFarm }) {
     <View style={styles.container}>
       <View style={styles.header}>
         <TouchableOpacity onPress={onBack}>
-          <Ionicons name="arrow-back" size={24} color="#333" />
+          <Text style={{ fontSize: 24 }}>←</Text>
         </TouchableOpacity>
         <Text style={styles.headerTitle}>Empleados</Text>
         <TouchableOpacity onPress={() => setView('add')}>
-          <Ionicons name="add-circle" size={28} color="#4CAF50" />
+          <Text style={{ fontSize: 28 }}>➕</Text>
         </TouchableOpacity>
       </View>
 
@@ -8477,7 +8477,7 @@ function EmployeesScreen({ onBack, currentFarm }) {
       <ScrollView style={styles.content}>
         {activeEmployees.length === 0 ? (
           <View style={{ padding: 40, alignItems: 'center' }}>
-            <Ionicons name="people-outline" size={64} color="#ccc" />
+            <Text style={{ fontSize: 64 }}>👥</Text>
             <Text style={{ marginTop: 20, color: '#999', fontSize: 16 }}>No hay empleados</Text>
             <TouchableOpacity style={[styles.button, { marginTop: 20 }]} onPress={() => setView('add')}>
               <Text style={styles.buttonText}>Agregar Primer Empleado</Text>
@@ -8504,10 +8504,10 @@ function EmployeesScreen({ onBack, currentFarm }) {
                   </View>
                   <View style={{ flexDirection: 'row', gap: 10 }}>
                     <TouchableOpacity onPress={() => handleEdit(employee)}>
-                      <Ionicons name="pencil" size={20} color="#2196F3" />
+                      <Text style={{ fontSize: 20 }}>✏️</Text>
                     </TouchableOpacity>
                     <TouchableOpacity onPress={() => handleDelete(employee)}>
-                      <Ionicons name="trash" size={20} color="#F44336" />
+                      <Text style={{ fontSize: 20 }}>🗑️</Text>
                     </TouchableOpacity>
                   </View>
                 </View>
@@ -8984,7 +8984,7 @@ const cleanExpiredCredits = async () => {};
           <View style={styles.container}>
             <View style={styles.header}>
               <TouchableOpacity onPress={() => setCurrentScreen('Dashboard')}>
-                <Ionicons name="arrow-back" size={24} color="#333" />
+                <Text style={{ fontSize: 24 }}>←</Text>
               </TouchableOpacity>
               <Text style={styles.headerTitle}>🧪 TEST Monetización</Text>
               <View style={{ width: 24 }} />
