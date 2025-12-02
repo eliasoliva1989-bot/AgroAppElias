@@ -9127,27 +9127,27 @@ const cleanExpiredCredits = async () => {};
       {['Dashboard', 'TreeManagement', 'Production', 'Sales', 'Expenses', 'Tasks', 'Reports', 'MapView'].includes(currentScreen) && (
         <View style={styles.bottomNav}>
           <TouchableOpacity style={styles.navItem} onPress={() => handleScreenNavigation('Dashboard')}>
-            <Ionicons name={currentScreen === 'Dashboard' ? 'home' : 'home-outline'} size={20} color={currentScreen === 'Dashboard' ? '#4CAF50' : '#666'} />
+            <Text style={{ fontSize: 24, opacity: currentScreen === 'Dashboard' ? 1 : 0.5 }}>🏠</Text>
             <Text style={[styles.navText, currentScreen === 'Dashboard' && styles.navTextActive]}>Inicio</Text>
           </TouchableOpacity>
           <TouchableOpacity style={styles.navItem} onPress={() => handleScreenNavigation('Production')}>
-            <Ionicons name={currentScreen === 'Production' ? 'basket' : 'basket-outline'} size={20} color={currentScreen === 'Production' ? '#4CAF50' : '#666'} />
+            <Text style={{ fontSize: 24, opacity: currentScreen === 'Production' ? 1 : 0.5 }}>🧺</Text>
             <Text style={[styles.navText, currentScreen === 'Production' && styles.navTextActive]}>Producción</Text>
           </TouchableOpacity>
           <TouchableOpacity style={styles.navItem} onPress={() => handleScreenNavigation('Sales')}>
-            <Ionicons name={currentScreen === 'Sales' ? 'cart' : 'cart-outline'} size={20} color={currentScreen === 'Sales' ? '#4CAF50' : '#666'} />
+            <Text style={{ fontSize: 24, opacity: currentScreen === 'Sales' ? 1 : 0.5 }}>🛒</Text>
             <Text style={[styles.navText, currentScreen === 'Sales' && styles.navTextActive]}>Ventas</Text>
           </TouchableOpacity>
           <TouchableOpacity style={styles.navItem} onPress={() => handleScreenNavigation('Expenses')}>
-            <Ionicons name={currentScreen === 'Expenses' ? 'wallet' : 'wallet-outline'} size={20} color={currentScreen === 'Expenses' ? '#4CAF50' : '#666'} />
+            <Text style={{ fontSize: 24, opacity: currentScreen === 'Expenses' ? 1 : 0.5 }}>💰</Text>
             <Text style={[styles.navText, currentScreen === 'Expenses' && styles.navTextActive]}>Gastos</Text>
           </TouchableOpacity>
           <TouchableOpacity style={styles.navItem} onPress={() => handleScreenNavigation('Tasks')}>
-            <Ionicons name={currentScreen === 'Tasks' ? 'checkbox' : 'checkbox-outline'} size={20} color={currentScreen === 'Tasks' ? '#4CAF50' : '#666'} />
+            <Text style={{ fontSize: 24, opacity: currentScreen === 'Tasks' ? 1 : 0.5 }}>✅</Text>
             <Text style={[styles.navText, currentScreen === 'Tasks' && styles.navTextActive]}>Tareas</Text>
           </TouchableOpacity>
           <TouchableOpacity style={styles.navItem} onPress={() => handleScreenNavigation('Reports')}>
-            <Ionicons name={currentScreen === 'Reports' ? 'stats-chart' : 'stats-chart-outline'} size={20} color={currentScreen === 'Reports' ? '#4CAF50' : '#666'} />
+            <Text style={{ fontSize: 24, opacity: currentScreen === 'Reports' ? 1 : 0.5 }}>📊</Text>
             <Text style={[styles.navText, currentScreen === 'Reports' && styles.navTextActive]}>Reportes</Text>
           </TouchableOpacity>
         </View>
