@@ -3836,14 +3836,22 @@ const customersSnap = await db
   .collection('customers')
   .get();
       const customers = customersSnap.docs.map(doc => ({ id: doc.id, ...doc.data() }));
-
       const topCustomers = Object.entries(customerSales)
-        .map(([id, total]) => ({
-          customer: customers.find(c => c.id === id),
-          total,
-        }))
-        .sort((a, b) => b.total - a.total)
-        .slice(0, 5);
+  .map(([id, total]) => {
+    // Buscar por ID primero, luego por nombre (legacy)
+    let customer = customers.find(c => c.id === id);
+    if (!customer) {
+      customer = customers.find(c => c.name === id);
+    }
+    return {
+      customer,
+      total,
+    };
+  })
+  .filter(item => item.customer) // Filtrar los que no tienen customer
+  .sort((a, b) => b.total - a.total)
+  .slice(0, 5);
+
 
       const topProducts = Object.entries(productSales)
         .map(([name, quantity]) => ({ name, quantity }))
@@ -6591,12 +6599,17 @@ function ReportsScreen({ onBack, currentFarm }) {
         customerRevenue[s.customerId] = (customerRevenue[s.customerId] || 0) + (s.total || 0);
       });
       const topCustomers = Object.entries(customerRevenue)
-        .map(([id, revenue]) => {
-          const customer = customers.find(c => c.id === id);
-          return { name: customer?.name || 'Desconocido', value: revenue };
-        })
-        .sort((a, b) => b.value - a.value)
-        .slice(0, 5);
+  .map(([id, revenue]) => {
+    // Buscar por ID primero, luego por nombre (legacy)
+    let customer = customers.find(c => c.id === id);
+    if (!customer) {
+      customer = customers.find(c => c.name === id);
+    }
+    return { name: customer?.name || 'Desconocido', value: revenue };
+  })
+  .filter(item => item.name !== 'Desconocido') // Filtrar desconocidos
+  .sort((a, b) => b.value - a.value)
+  .slice(0, 5);
 
       setStats({
         totalRevenue,
