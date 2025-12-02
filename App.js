@@ -3111,7 +3111,6 @@ function TreeTypeModal({ visible, onClose, onSuccess, currentFarm }) {
     </Modal>
   );
 }
-
 // ============ PRODUCTION SCREEN ============
 function ProductionScreen({ settings, currentFarm, onBack }) {
   const [harvests, setHarvests] = useState([]);
@@ -3126,39 +3125,8 @@ function ProductionScreen({ settings, currentFarm, onBack }) {
   const [editingHarvest, setEditingHarvest] = useState(null);
   const [filterType, setFilterType] = useState('all');
 
-  useEffect(() => {
-    loadHarvests();
-  }, []);
-
-// Validación de finca
-  if (!currentFarm || !currentFarm.id) {
-    return (
-      <View style={styles.container}>
-        <View style={styles.header}>
-          {onBack && (
-            <TouchableOpacity onPress={onBack}>
-              <Text style={{ fontSize: 24 }}>←</Text>
-            </TouchableOpacity>
-          )}
-          <Text style={styles.headerTitle}>Producción</Text>
-        </View>
-        <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
-          <Text style={{ fontSize: 18, color: '#F44336', marginBottom: 10 }}>⚠️ Error</Text>
-          <Text style={{ color: '#666' }}>No hay finca seleccionada</Text>
-          <TouchableOpacity 
-            style={{ marginTop: 20, padding: 10, backgroundColor: '#4CAF50', borderRadius: 5 }}
-            onPress={onBack}
-          >
-            <Text style={{ color: 'white' }}>Volver al Dashboard</Text>
-          </TouchableOpacity>
-        </View>
-      </View>
-    );
-  }
-
-
-
-const loadHarvests = async () => {
+  // ✅ FUNCIONES PRIMERO (antes del useEffect)
+  const loadHarvests = async () => {
     try {
       const collection = getFarmCollection('harvests', currentFarm);
       if (!collection) {
@@ -3187,6 +3155,7 @@ const loadHarvests = async () => {
       console.error('Error:', error);
     }
   };
+
   const handleDelete = (id, date) => {
     Alert.alert(
       'Confirmar Eliminación',
@@ -3199,11 +3168,11 @@ const loadHarvests = async () => {
           onPress: async () => {
             try {
               const collection = getFarmCollection('harvests', currentFarm);
-if (!collection) {
-  Alert.alert('Error', 'No se puede eliminar: finca no válida');
-  return;
-}
-await collection.doc(id).delete();
+              if (!collection) {
+                Alert.alert('Error', 'No se puede eliminar: finca no válida');
+                return;
+              }
+              await collection.doc(id).delete();
               Alert.alert('Éxito', 'Cosecha eliminada');
               loadHarvests();
             } catch (error) {
@@ -3214,6 +3183,37 @@ await collection.doc(id).delete();
       ]
     );
   };
+
+  // ✅ AHORA SÍ el useEffect
+  useEffect(() => {
+    loadHarvests();
+  }, []);
+
+  // ✅ Validación de finca
+  if (!currentFarm || !currentFarm.id) {
+    return (
+      <View style={styles.container}>
+        <View style={styles.header}>
+          {onBack && (
+            <TouchableOpacity onPress={onBack}>
+              <Text style={{ fontSize: 24 }}>←</Text>
+            </TouchableOpacity>
+          )}
+          <Text style={styles.headerTitle}>Producción</Text>
+        </View>
+        <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
+          <Text style={{ fontSize: 18, color: '#F44336', marginBottom: 10 }}>⚠️ Error</Text>
+          <Text style={{ color: '#666' }}>No hay finca seleccionada</Text>
+          <TouchableOpacity 
+            style={{ marginTop: 20, padding: 10, backgroundColor: '#4CAF50', borderRadius: 5 }}
+            onPress={onBack}
+          >
+            <Text style={{ color: 'white' }}>Volver al Dashboard</Text>
+          </TouchableOpacity>
+        </View>
+      </View>
+    );
+  }
 
   const filteredHarvests = harvests.filter(h => {
     if (filterType === 'all') return true;
@@ -3305,7 +3305,7 @@ await collection.doc(id).delete();
 
         {filteredHarvests.length === 0 && (
           <View style={styles.emptyState}>
-            <Ionicons name="basket-outline" size={64} color="#ccc" />
+            <Text style={{ fontSize: 64 }}>🧺</Text>
             <Text style={styles.emptyText}>No hay cosechas registradas</Text>
             <TouchableOpacity style={styles.button} onPress={() => setShowAddModal(true)}>
               <Text style={styles.buttonText}>Registrar Cosecha</Text>
@@ -3329,123 +3329,50 @@ await collection.doc(id).delete();
     </View>
   );
 }
-
+// ============ HARVEST CARD COMPONENT ============
 function HarvestCard({ harvest, onEdit, onDelete, currentFarm }) {
-  const [details, setDetails] = useState({ sector: null, row: null, tree: null, treeType: null });
-
-  useEffect(() => {
-    loadDetails();
-  }, [harvest]);
-
-  const loadDetails = async () => {
-    try {
-      if (harvest.sectorId) {
-        const sectorDoc = await getFarmCollection('sectors', currentFarm).doc(harvest.sectorId).get();
-        if (sectorDoc.exists) setDetails(prev => ({ ...prev, sector: sectorDoc.data() }));
-      }
-      if (harvest.rowId) {
-        const rowDoc = await getFarmCollection('rows', currentFarm).doc(harvest.rowId).get();
-        if (rowDoc.exists) setDetails(prev => ({ ...prev, row: rowDoc.data() }));
-      }
-      if (harvest.treeId) {
-        const treeDoc = await getFarmCollection('trees', currentFarm).doc(harvest.treeId).get();
-        if (treeDoc.exists) {
-          const treeData = treeDoc.data();
-          setDetails(prev => ({ ...prev, tree: treeData }));
-          if (treeData.treeTypeId) {
-            const typeDoc = await getFarmCollection('treeTypes', currentFarm).doc(treeData.treeTypeId).get();
-            if (typeDoc.exists) setDetails(prev => ({ ...prev, treeType: typeDoc.data() }));
-          }
-        }
-      }
-    } catch (error) {
-      console.error('Error loading details:', error);
+  const getLocationText = () => {
+    if (harvest.harvestType === 'tree' && harvest.treeId) {
+      return `Árbol: ${harvest.treeId}`;
+    } else if (harvest.harvestType === 'row' && harvest.rowNumber) {
+      return `Hilera: ${harvest.rowNumber}`;
+    } else if (harvest.harvestType === 'sector' && harvest.sectorName) {
+      return `Sector: ${harvest.sectorName}`;
     }
-  };
-
-  const getHarvestIcon = () => {
-    switch (harvest.harvestType) {
-      case 'tree': return 'leaf';
-      case 'row': return 'grid';
-      case 'sector': return 'location';
-      default: return 'basket';
-    }
-  };
-
-  const getHarvestLabel = () => {
-    switch (harvest.harvestType) {
-      case 'tree': return `Árbol #${details.tree?.number || 'N/A'}`;
-      case 'row': return details.row?.name || 'Surco N/A';
-      case 'sector': return details.sector?.name || 'Sector N/A';
-      default: return 'N/A';
-    }
+    return 'Ubicación no especificada';
   };
 
   return (
     <View style={styles.harvestCard}>
       <View style={styles.harvestHeader}>
-        <Ionicons name={getHarvestIcon()} size={24} color="#795548" />
-        <View style={styles.harvestHeaderText}>
-          <Text style={styles.harvestTitle}>{getHarvestLabel()}</Text>
-          <Text style={styles.harvestSubtitle}>
-            {harvest.productType || (harvest.harvestType === 'tree' && details.treeType ? details.treeType.name : '')}
-          </Text>
+        <View>
+          <Text style={styles.harvestDate}>{harvest.date}</Text>
+          <Text style={styles.harvestLocation}>{getLocationText()}</Text>
         </View>
-        <View style={styles.harvestBadge}>
-          <Text style={styles.harvestBadgeText}>
-            {harvest.harvestType === 'tree' ? 'Árbol' : harvest.harvestType === 'row' ? 'Surco' : 'Sector'}
-          </Text>
-        </View>
-      </View>
-
-      <View style={styles.harvestDetails}>
-        <View style={styles.harvestDetailItem}>
-          <Ionicons name="calendar" size={18} color="#666" />
-          <Text style={styles.harvestDetailText}>{harvest.date}</Text>
-        </View>
-        <View style={styles.harvestDetailItem}>
-          <Ionicons name="basket" size={18} color="#666" />
-          <Text style={styles.harvestDetailText}>
-            {harvest.quantity} {harvest.unit || 'lb'}
-          </Text>
+        <View style={styles.harvestActions}>
+          <TouchableOpacity onPress={onEdit} style={styles.actionButton}>
+            <Text style={{ fontSize: 20 }}>✏️</Text>
+          </TouchableOpacity>
+          <TouchableOpacity onPress={onDelete} style={styles.actionButton}>
+            <Text style={{ fontSize: 20 }}>🗑️</Text>
+          </TouchableOpacity>
         </View>
       </View>
-
-      {harvest.waste && harvest.waste > 0 && (
-        <View style={styles.wasteCard}>
-          <Ionicons name="trash" size={16} color="#F44336" />
-          <Text style={styles.wasteText}>
-            Merma: {harvest.waste} {harvest.wasteUnit || 'lb'}
-          </Text>
-          <Text style={styles.netYieldText}>
-            → Neto: {(harvest.quantity - harvest.waste).toFixed(1)} {harvest.unit || 'lb'}
-          </Text>
+      <View style={styles.harvestBody}>
+        <View style={styles.harvestStat}>
+          <Text style={styles.harvestStatLabel}>Cantidad</Text>
+          <Text style={styles.harvestStatValue}>{harvest.quantity || 0} kg</Text>
         </View>
-      )}
-
+        {harvest.quality && (
+          <View style={styles.harvestStat}>
+            <Text style={styles.harvestStatLabel}>Calidad</Text>
+            <Text style={styles.harvestStatValue}>{harvest.quality}</Text>
+          </View>
+        )}
+      </View>
       {harvest.notes && (
         <Text style={styles.harvestNotes}>📝 {harvest.notes}</Text>
       )}
-
-      {harvest.nextHarvestDate && (
-        <View style={styles.projectionCard}>
-          <Ionicons name="time" size={16} color="#FF9800" />
-          <Text style={styles.projectionText}>
-            Próxima cosecha proyectada: {harvest.nextHarvestDate}
-          </Text>
-        </View>
-      )}
-
-      <View style={styles.cardActions}>
-        <TouchableOpacity style={styles.actionButton} onPress={onEdit}>
-          <Ionicons name="create-outline" size={20} color="#2196F3" />
-          <Text style={styles.actionButtonText}>Editar</Text>
-        </TouchableOpacity>
-        <TouchableOpacity style={[styles.actionButton, styles.deleteButton]} onPress={onDelete}>
-          <Ionicons name="trash-outline" size={20} color="#F44336" />
-          <Text style={[styles.actionButtonText, styles.deleteButtonText]}>Eliminar</Text>
-        </TouchableOpacity>
-      </View>
     </View>
   );
 }
